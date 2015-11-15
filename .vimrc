@@ -3,7 +3,6 @@
 """""""""""""""
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
-"set rtp+=~/.nvim/bundle/Vundle.vim
 call plug#begin('~/.vim/plugged')
 " Define bundles via Github repos
 " 
@@ -28,7 +27,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/greplace.vim'
-"Plug 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 "Plug 'croaky/vim-colors-github'
 "Plug 'danro/rename.vim'
 "Plug 'Valloric/YouCompleteMe'
@@ -94,7 +93,6 @@ autocmd BufReadPost *
 """""""""""""""
 " 03 Theme Colors 
 """""""""""""""
-syntax enable             " enable syntax highlighting (previously syntax on).
 " Color scheme
 set background=dark
 "colorscheme Tomorrow-Night-Bright
@@ -109,6 +107,7 @@ let &t_AF="\e[38;5;%dm"
 " Prettify JSON files
 "autocmd BufRead,BufNewFile *.json set filetype=json
 "autocmd Syntax json sou ~/.vim/syntax/json.vim
+syn on 
 
 " Prettify Vagrantfile
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
@@ -147,7 +146,7 @@ filetype plugin indent on       " Do filetype detection and load custom file plu
 set wildmenu                    " Enhanced completion hints in command line
 set complete=.,w,b,u,U,t,i,d    " Do lots of scanning on tab completion
 set updatecount=100             " Write swap file to disk every 100 chars
-" set directory=~/.nvim/swap       " Directory to use for the swap file
+" set directory=~/.vim/swap       " Directory to use for the swap file
 set diffopt=filler,iwhite       " In diff mode, ignore whitespace changes and align unchanged lines
 set scrolloff=3                 " Start scrolling 3 lines before the horizontal window border
 " up/down on displayed lines, not real lines. More useful than painful.
@@ -157,7 +156,7 @@ noremap j gj
 
 set undolevels=10000
 if has("persistent_undo")
-  set undodir=~/.nvim/undo       " Allow undoes to persist even after a file is closed
+  set undodir=~/.vim/undo       " Allow undoes to persist even after a file is closed
   set undofile
 endif
 nnoremap <C-u> :GundoToggle<CR>
@@ -400,6 +399,6 @@ end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Local config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable($HOME . "/.nvimrc.local")
-  source ~/.nvimrc.local
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
 endif
