@@ -11,12 +11,12 @@ Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'bling/vim-airline'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'gmarik/vundle'
+"Plug 'gmarik/vundle'
 Plug 'godlygeek/tabular'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
 Plug 'nicholaides/words-to-avoid.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdcommenter'
@@ -99,8 +99,8 @@ set background=dark
 "colorscheme base16-atelierheath
 "colorscheme base16-atelierdune
 set t_Co=256
-colorscheme gruvbox
-"colorscheme CandyPaper
+"colorscheme colorsbox-stnight
+colorscheme CandyPaper
 "xset t_Co=256              " enable 256-color mode.
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
