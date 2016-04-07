@@ -314,7 +314,7 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeShowBookmarks=1
 let NERDTreeShowFiles=1
 let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1
+" let NERDTreeQuitOnOpen=1
 
 """""""""""""""""""""""""
 " Plugins
