@@ -7,21 +7,24 @@ call plug#begin('~/.vim/plugged')
 " Define bundles via Github repos
 " 
 " Standard
+Plug 'airblade/vim-gitgutter'
 Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'christoomey/vim-tmux-navigator'
-"Plug 'gmarik/vundle'
 Plug 'godlygeek/tabular'
 Plug 'jamessan/vim-gnupg'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 "Plug 'morhetz/gruvbox'
+Plug 'mhinz/vim-signify'
 Plug 'nicholaides/words-to-avoid.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
 Plug 'szw/vim-tags'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -40,15 +43,22 @@ Plug 'fatih/vim-go'
 " 
 " Javascript / Node.js
 " 
+Plug 'digitaltoad/vim-jade'
+Plug 'elzr/vim-json'
+Plug 'gavocanov/vim-js-indent', { 'for':'javascript'}
+Plug 'heavenshell/vim-jsdoc'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'moll/vim-node'
-Plug 'digitaltoad/vim-jade'
-"Plug 'elzr/vim-json'
+Plug 'mxw/vim-jsx'
+Plug 'othree/es.next.syntax.vim'
+Plug 'othree/jsdoc-syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/yajs', { 'for':'javascript'}
 " 
 " Markdown
 " 
 "Plug 'plasticboy/vim-markdown'
-"Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown'
 " 
 " Ruby/Rails/Cucumber
 " 
@@ -105,6 +115,8 @@ colorscheme CandyPaper
 "xset t_Co=256              " enable 256-color mode.
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
+" Airline
+let g:airline_theme="distinguished"
 " Prettify JSON files
 "autocmd BufRead,BufNewFile *.json set filetype=json
 "autocmd Syntax json sou ~/.vim/syntax/json.vim
@@ -208,11 +220,23 @@ let html_use_css = 1
 "let use_xhtml = 1
 let xml_use_xhtml = 1
 let g:html_indent_tags = 'li\|p' " Treat <li> and <p> tags like the block tags they are
-let g:vim_markdown_folding_disabled=1
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
+" ----------------------------------------
+" Filetype: markdown
+" ----------------------------------------
+
+" Variable to highlight markdown fenced code properly -- uses tpope's
+" vim-markdown plugin (which is bundled with vim7.4 now)
+" There are more syntaxes, but checking for them makes editing md very slow
+let g:vim_markdown_folding_disabled=1
+let g:markdown_fenced_languages = [
+      \ 'html',
+      \ 'javascript', 'js=javascript', 'json=javascript',
+      \ 'sass',
+      \ ]
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 06. Custom Commands                                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -292,12 +316,16 @@ nnoremap <leader><leader> <c-^>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " configure syntastic syntax checking to check on open as well as save
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_check_on_open=1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatusLineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs=1
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['c', 'scss'] }
-
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
